@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello_react</title>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+    <!-- 引入babel. 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入prop-types 用于对组件标签属性进行限制 -->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <!-- type一定要写bable,因为里面要写jsx语法要让bable来编译成js -->
+    <script type="text/babel">
+      function Person(props) {
+        const { name, age, sex } = props;
+        return (
+          <ul>
+            <li>姓名：{name}</li>
+            <li>性别：{sex}</li>
+            <li>年龄：{age}</li>
+          </ul>
+        );
+      }
+      // 限制属性的类型 static关键词表示给类自身增加属性
+      Person.protoTypes = {
+        name: PropTypes.string.isRequired, // 必须传的 字符串类型
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func, // speak为函数
+      };
+      // 设置默认值
+      Person.defaultProps = {
+        sex: "默认",
+        age: 18,
+      };
+
+      ReactDOM.render(
+        <Person name="张三" age={19} />,
+        document.getElementById("test2")
+      );
+    </script>
+  </body>
+</html>

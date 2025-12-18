@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello_react</title>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+
+    <!-- type一定要写bable,因为里面要写jsx语法要让bable来编译成js -->
+    <script type="text/javascript">
+      // 1. 创建虚拟DOM
+      const VDOM = React.createElement("h1", { id: "title" }, "hello react");
+      // 2. 渲染虚拟DOM到页面
+      ReactDOM.render(VDOM, document.getElementById("test"));
+
+      console.log("虚拟DOM", VDOM);
+      /*
+          关于虚拟DOM：
+            1. 本质是Object类型的对象（一般对象）。
+            2. 虚拟DOM身上的属性比较少，因为是react内部再用，无需太多的属性。
+            3. 虚拟DOM最终会被React转换成真实DOM，呈现在页面上。
+      */
+    </script>
+  </body>
+</html>

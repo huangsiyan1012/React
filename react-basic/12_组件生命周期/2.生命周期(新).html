@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello_react</title>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+    <!-- 引入babel. 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- type一定要写bable,因为里面要写jsx语法要让bable来编译成js -->
+    <script type="text/babel">
+      /*
+        1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+              1.constructor()
+              2.getDerivedStateFromProps ===> 新增（当satte的值永远取决于props时）
+              3.render()
+              4.componentDidMount() ===> 常用
+        2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+              1.getDerivedStateFromProps 
+              2.shouldComponentUpdate()
+              3.render() ===> 常用
+              4.getSnapshotBeforeUpdate ===> 新增（更新前快照）
+              5.componentDidUpdate()
+	      3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+              1.componentWillUnmount() ===> 常用
+      */
+    </script>
+  </body>
+</html>

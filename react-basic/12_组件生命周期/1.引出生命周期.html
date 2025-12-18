@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello_react</title>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+    <!-- 引入babel. 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- type一定要写bable,因为里面要写jsx语法要让bable来编译成js -->
+    <script type="text/babel">
+      class Life extends React.Component {
+        state = { opacity: 1 };
+
+        death = () => {
+          //卸载组件
+          ReactDOM.unmountComponentAtNode(document.getElementById("test"));
+        };
+
+        //组件挂载后调用，只调用一次
+        componentDidMount() {
+          this.timer = setInterval(() => {
+            // 获取状态
+            let opacity = this.state.opacity;
+            // 减小
+            opacity -= 0.1;
+            if (opacity <= 0) opacity = 1;
+            //更新
+            this.setState({ opacity });
+          }, 200);
+        }
+
+        //组件将要卸载时调用
+        componentWillUnmount() {
+          // 清除定时器
+          clearInterval(this.timer);
+        }
+
+        render() {
+          return (
+            <div>
+              <h2 style={{ opacity: this.state.opacity }}>React学习</h2>
+              <button onClick={this.death}>消失</button>
+            </div>
+          );
+        }
+      }
+      // 将组件渲染到页面
+      ReactDOM.render(<Life />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
