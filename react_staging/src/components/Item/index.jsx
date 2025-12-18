@@ -1,7 +1,12 @@
+import PropTypes from "prop-types";
 import { Component } from "react";
 import "./index.css";
 
 export default class Item extends Component {
+  // 对接收的props进行类型和必要性的限制
+  static propTypes = {
+    updateTodo: PropTypes.func.isRequired,
+  };
   state = { mouse: false };
   // 鼠标移入移出的回调
   handleMouse = (flag, e) => {

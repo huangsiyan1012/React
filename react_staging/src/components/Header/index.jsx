@@ -1,8 +1,14 @@
 import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
 import { Component } from "react";
 import "./index.css";
 
 export default class Header extends Component {
+  // 对接收的props进行类型和必要性的限制
+  static propTypes = {
+    // 接收方法 必需
+    addTodo: PropTypes.func.isRequired,
+  };
   handleKeyUp = (e) => {
     // 添加的不能为空
     if (e.target.value.trim() === "") {
