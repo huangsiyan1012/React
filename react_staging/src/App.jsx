@@ -13,13 +13,20 @@ export default class App extends Component {
       { id: "003", name: "打代码", done: true },
     ],
   };
+
+  // 回调函数-给Header组件调用，用于header把数据传递给App组件
+  addTodo = (todoObj) => {
+    const { todos } = this.state;
+    const newTodos = [todoObj, ...todos];
+    this.setState({ todos: newTodos });
+  };
   render() {
     const { todos } = this.state;
     return (
       <div>
         <div className="todo-container">
           <div className="todo-wrap">
-            <Header></Header>
+            <Header addTodo={this.addTodo}></Header>
             <List todos={todos}></List>
             <Footer></Footer>
           </div>
