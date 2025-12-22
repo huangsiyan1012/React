@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Header from "./components/Header";
+import MyNavLink from "./components/MyNavLink";
 import About from "./pages/About";
 import Home from "./pages/Home";
 
@@ -25,20 +26,8 @@ export default class App extends Component {
                 </a> */}
 
                 {/* 在React中靠路由链接实现切换组件 - 编写路由链接 */}
-                <NavLink
-                  activeClassName="hsy_active"
-                  className="list-group-item"
-                  to="/about"
-                >
-                  About
-                </NavLink>
-                <NavLink
-                  activeClassName="hsy_active"
-                  className="list-group-item"
-                  to="/home"
-                >
-                  Home
-                </NavLink>
+                <MyNavLink to="/about">Home</MyNavLink>
+                <MyNavLink to="/home">About</MyNavLink>
               </div>
             </div>
             <div className="col-xs-6">
